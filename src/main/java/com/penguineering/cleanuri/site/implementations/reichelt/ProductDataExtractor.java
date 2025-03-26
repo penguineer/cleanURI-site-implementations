@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.logging.Level;
@@ -24,12 +25,12 @@ public class ProductDataExtractor {
 
     public Optional<ProductDescription> extractProductDescription() {
         try {
-            Element productElement = document.selectFirst("div#av_articleheader");
+            Element productElement = document.selectFirst("#product > section.productHead");
             if (productElement == null)
                 return Optional.empty();
 
-            Optional<Element> productIdElement = Optional.ofNullable(productElement.selectFirst("h2"));
-            Optional<Element> productNameElement = Optional.ofNullable(productElement.selectFirst("span[itemprop=name]"));
+            Optional<Element> productIdElement = Optional.ofNullable(productElement.selectFirst("div.productBuyArea > div.productBuy > p > span"));
+            Optional<Element> productNameElement = Optional.ofNullable(productElement.selectFirst("div.productBuyArea > div.productBuy > h1"));
             Optional<Element> productImageElement = Optional.ofNullable(document.selectFirst("img[itemprop=image]"));
 
             ProductDescription.Builder productDescriptionBuilder = new ProductDescription.Builder();
@@ -39,7 +40,7 @@ public class ProductDataExtractor {
 
             productImageElement
                     .map(element -> element.absUrl("src"))
-                    .map(URI::create)
+                    .map(this::stripQueryParameters)
                     .ifPresent(productDescriptionBuilder::setImage);
 
             return productDescriptionBuilder.build();
@@ -48,6 +49,17 @@ public class ProductDataExtractor {
                 exceptionHandler.accept(Level.SEVERE, e);
 
             return Optional.empty();
+        }
+    }
+
+    private URI stripQueryParameters(String url) {
+        try {
+            URI uri = new URI(url);
+            return new URI(uri.getScheme(), uri.getAuthority(), uri.getPath(), null, uri.getFragment());
+        } catch (URISyntaxException e) {
+            if (exceptionHandler != null)
+                exceptionHandler.accept(Level.SEVERE, e);
+            return null;
         }
     }
 }
