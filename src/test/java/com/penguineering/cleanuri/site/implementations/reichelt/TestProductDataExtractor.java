@@ -29,8 +29,8 @@ public class TestProductDataExtractor {
      */
     @ParameterizedTest
     @CsvSource({
-            "'testdata/reichelt/reichelt-p10228.html', 'LED 3MM RT', 'LED, 3 mm, bedrahtet, rot, 191 mcd, 50°', 'https://cdn-reichelt.de/bilder/web/artikel_ws/A500/LED3ST.jpg'",
-            "'testdata/reichelt/reichelt-p58170.html', 'DS 18B20Z', 'Digital Thermometer, 1-wire +/- 0,5°C, SO-8', 'https://cdn-reichelt.de/bilder/web/artikel_ws/A200/MSOP-8.jpg'"
+            "'testdata/reichelt/reichelt-p10228.html', 'LED 3MM RT', 'LED, 3 mm, bedrahtet, rot, 191 mcd, 50°', 'https://cdn-reichelt.de/resize/600/-/web/xxl_ws/A500/LED3ST.png'",
+            "'testdata/reichelt/reichelt-p58170.html', 'DS 18B20Z', 'Digital Thermometer, 1-wire +/- 0,5°C, SO-8', 'https://cdn-reichelt.de/resize/600/-/web/xxl_ws/A200/MSOP-8.png'"
     })
     public void testExtractProductDescription(String fileName,
                                               String expectedId,
