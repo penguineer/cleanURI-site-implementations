@@ -31,8 +31,8 @@ public class TestReicheltExtractor {
      */
     @ParameterizedTest
     @CsvSource({
-            "'testdata/reichelt/reichelt-p10228.html', 'LED 3MM RT: LED, 3 mm, bedrahtet, rot, 191 mcd, 50° bei reichelt elektronik', true, true",
-            "'testdata/reichelt/reichelt-p58170.html', 'DS 18B20Z: Digital Thermometer, 1-wire + - - 0,5°C, SO-8 bei reichelt elektronik', true, true"
+            "'testdata/reichelt/reichelt-p10228.html', 'HOTTECH SEMICONDUCTOR LED, 3 mm, bedrahtet, rot, 191 mcd, 50° | LEDs, 3 mm günstig kaufen | reichelt elektronik', true, true",
+            "'testdata/reichelt/reichelt-p58170.html', 'FREI Digital Thermometer, 1-wire +/- 0,5°C, SO-8 | Temperatur- & Feuchtesensoren günstig kaufen | reichelt elektronik', true, true"
     })
     public void testReicheltExtractor(String fileName,
                                       String expectedTitle,

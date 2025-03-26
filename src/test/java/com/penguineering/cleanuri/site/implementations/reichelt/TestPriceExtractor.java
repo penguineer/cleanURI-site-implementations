@@ -33,7 +33,7 @@ public class TestPriceExtractor {
      */    @ParameterizedTest
     @CsvSource({
             "testdata/reichelt/reichelt-p10228.html, 0.07, ''",
-            "testdata/reichelt/reichelt-p58170.html, 2.79, '10:2.651,50:2.372,100:2.093'"
+            "testdata/reichelt/reichelt-p58170.html, 2.20, '10:2.090,50:1.870,100:1.650'"
     })
     public void testExtractPricing(String fileName, String expectedUnitPriceStr, String expectedDiscountsStr) throws IOException {
         BigDecimal expectedUnitPrice = new BigDecimal(expectedUnitPriceStr);

@@ -46,17 +46,20 @@ public class PriceExtractor implements ExceptionPassing {
     }
 
     private void extractDiscounts() {
-        doc.select("div#av_price_discount td").stream()
-                .map(Element::html)
-                .map(html -> html.replace("<br>", "|"))
-                .map(text -> text.split("\\|"))
-                .filter(parts -> parts.length >= 2)
-                .forEach(this::addDiscountToPricing);
+        doc.select("#product > section.productHead > div.productBuyArea > div.productBuy > div.awesomeDropdown.discountValue > ul > li > div.inline-block > a.inline-block")
+                .forEach(this::processDiscountElement);
     }
 
-    private void addDiscountToPricing(String[] parts) {
-        Optional<Integer> quantity = parseQuantity(parts[0]);
-        Optional<BigDecimal> discountedPrice = parseDiscountedPrice(parts[1]);
+    private void processDiscountElement(Element element) {
+        Optional<Integer> quantity = Optional
+                .ofNullable(element.selectFirst("p.left.text span.block"))
+                .map(Element::text)
+                .flatMap(this::parseQuantity);
+
+        Optional<BigDecimal> discountedPrice = Optional
+                .ofNullable(element.selectFirst("p.productPrice.right"))
+                .map(Element::text)
+                .flatMap(this::parseDiscountedPrice);
 
         if (quantity.isPresent() && discountedPrice.isPresent())
             pricingBuilder.addDiscount(quantity.get(), discountedPrice.get());
@@ -73,7 +76,7 @@ public class PriceExtractor implements ExceptionPassing {
 
     private Optional<BigDecimal> parseDiscountedPrice(String text) {
         try {
-            return sanitizeText(text).map(BigDecimal::new);
+            return sanitizeText(text.replace("\u00a0€", "")).map(BigDecimal::new);
         } catch (NumberFormatException e) {
             handleNumberFormatException(e);
             return Optional.empty();

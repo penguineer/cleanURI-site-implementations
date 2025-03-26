@@ -24,7 +24,8 @@ class TestReicheltCanonizer {
      */
     @ParameterizedTest
     @CsvSource({
-            "'https://www.reichelt.de/digital-thermometer-1-wire--0-5-c-so-8-ds-18b20z-p58170.html', 'https://www.reichelt.de/index.html?ARTICLE=58170'",
+            "'https://www.reichelt.de/de/de/shop/produkt/led_3_mm_bedrahtet_rot_191_mcd_50_-10228', 'https://www.reichelt.de/index.html?ARTICLE=10228'",
+            "'https://www.reichelt.de/de/de/shop/produkt/digital_thermometer_1-wire_-_0_5_c_so-8-58170', 'https://www.reichelt.de/index.html?ARTICLE=58170'",
             "'https://www.reichelt.de/non-parsable-uri', ''"
     })
     void testCanonize(String inputUri, String expectedOutputUri) {
