@@ -17,8 +17,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestEbayExtractor {
     @ParameterizedTest
     @CsvSource({
-            "'testdata/ebay/ebay-401619364415.html', '401619364415', 'LM2596S XL6009 DC-DC Boost Buck Step Up Down Voltage Power Converter Module', 'https://i.ebayimg.com/images/g/odYAAOSwqeVbyFgy/s-l500.jpg'",
-            "'testdata/ebay/ebay-404683105546.html', '404683105546', 'ELEGOO Neptune 4 MAX 3D Drucker 500mm/s High Speed FDM Printer Large Size', 'https://i.ebayimg.com/images/g/IbIAAOSwpHdlgWgm/s-l500.jpg'"
+            "'testdata/ebay/ebay-267193750017.html', '267193750017', 'Dell Latitude 7200 2-in-1 LTE i5-8365U 16GB 512GB Win 11 Pro 12,3\" FP SC FID DE', 'https://i.ebayimg.com/thumbs/images/g/j-AAAOSwTVhhjig8/s-l500.jpg'",
+            "'testdata/ebay/ebay-334077595032.html', '334077595032', 'LEGO® Creator Expert 10283 NASA-Spaceshuttle „Discovery“ NEU OVP EOL', 'https://i.ebayimg.com/thumbs/images/g/~PYAAOSwd2lnwquZ/s-l500.jpg'"
     })
     public void testEbayExtractor(String fileName,
                                    String expectedId,
