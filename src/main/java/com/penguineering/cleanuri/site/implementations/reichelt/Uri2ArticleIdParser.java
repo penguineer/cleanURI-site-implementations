@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Uri2ArticleIdParser {
-    static final Pattern artidPattern = Pattern.compile("^http.*://www\\.reichelt\\.de/.*-p(.*)\\.html.*$");
+    static final Pattern artidPattern = Pattern.compile("^http.*://www\\.reichelt\\.de/index\\.html\\?ARTICLE=(.*)$");
     static final Pattern artidPattern2 = Pattern.compile("^http.*://www\\.reichelt\\.de/.*/produkt/.*-(\\d+)$");
 
     public Uri2ArticleIdParser() {
