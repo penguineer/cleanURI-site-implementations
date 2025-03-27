@@ -31,8 +31,8 @@ public class ProductDataExtractor {
             if (id.isEmpty())
                 return Optional.empty();
 
-            Optional<Element> productNameElement = Optional.ofNullable(document.selectFirst("#mainContent > div.vim.d-vi-region.x-atf-center-river--top > div.vim.x-item-title > h1"));
-            Optional<Element> productImageElement = Optional.ofNullable(document.selectFirst("#mainImgHldr > div.ux-image-carousel-container > div.ux-image-carousel.img-transition-medium > div.ux-image-carousel-item.active.image > div > div > img"));
+            Optional<Element> productNameElement = Optional.ofNullable(document.selectFirst("#mainContent > div.vim.d-vi-evo-region > div.vim.x-item-title > h1 > span"));
+            Optional<Element> productImageElement = Optional.ofNullable(document.selectFirst("#PicturePanel > div.vim.x-evo-atf-left-river > div > div.vim.x-photos > div.x-photos-min-view.filmstrip.filmstrip-x > div.ux-image-carousel-container.image-container > div.ux-image-carousel.zoom.img-transition-medium > div.ux-image-carousel-item.image-treatment.active.image > img"));
 
             ProductDescription.Builder productDescriptionBuilder = new ProductDescription.Builder();
 
