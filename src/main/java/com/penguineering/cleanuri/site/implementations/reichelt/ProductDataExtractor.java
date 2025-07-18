@@ -29,7 +29,7 @@ public class ProductDataExtractor {
             if (productElement == null)
                 return Optional.empty();
 
-            Optional<Element> productIdElement = Optional.ofNullable(productElement.selectFirst("div.productBuyArea > div.productBuy > p > span"));
+            Optional<Element> productIdElement = Optional.ofNullable(productElement.selectFirst("div.productBuyArea > div.productBuy > small > span > b"));
             Optional<Element> productNameElement = Optional.ofNullable(productElement.selectFirst("div.productBuyArea > div.productBuy > h1"));
             Optional<Element> productImageElement = Optional.ofNullable(document.selectFirst("img[itemprop=image]"));
 
