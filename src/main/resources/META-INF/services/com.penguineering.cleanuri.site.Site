@@ -1,2 +1,3 @@
 com.penguineering.cleanuri.site.implementations.reichelt.ReicheltSite
 com.penguineering.cleanuri.site.implementations.ebay.EbaySite
+com.penguineering.cleanuri.site.implementations.amazon.AmazonSite
